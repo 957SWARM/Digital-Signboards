@@ -1,5 +1,6 @@
 
 #include <Adafruit_Protomatter.h>
+#include "scroll_text.h"
 
 extern Adafruit_Protomatter matrix;
 

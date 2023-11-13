@@ -1,5 +1,6 @@
 
 #include <Adafruit_Protomatter.h>
+#include "patterns.h"
 
 extern Adafruit_Protomatter matrix;
 
