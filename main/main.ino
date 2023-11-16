@@ -61,7 +61,7 @@ int colorSelect = 0;
 int prideSelect = 0;
 //----------------------------\\
 
-//Scrolltext stuff
+//Scrolltext (st) stuff 
 int stRuns = 0;
 
 void setup() {
@@ -86,9 +86,9 @@ void setup() {
  
 }
 
-void fun(int del_len){
+void holdup(int del_len){
   currentTime = millis();
-  while((millis()-currentTime) < del_len){} //just runs a While loop with nothing in it, essentially just doing nothing until it reaches the specified time
+  while((millis()-currentTime) < del_len){} //this runs a While loop with nothing in it, essentially just doing nothing until it reaches the specified time
 }
 
 void loop() {
@@ -102,42 +102,42 @@ void loop() {
       sliderSelect = 1;
     }
     
-    matrix.fillRect(0, 0, 64, 16, matrix.color565(0, 0, 0));
+    matrix.fillRect(0, 0, 64, 16, matrix.color565(0, 0, 0)); //draws a black rectangle, making the screen appear blank
     matrix.show();
-    fun(500);
+    holdup(500);
     for(uint8_t x=0; x<65; x++){
       matrix.fillRect(0, 0, 64, 16, matrix.color565(0, 0, 0));
       
       drawSlider(sliderSelect, -32+x, 0);
       matrix.show();
-      fun(5);
+      holdup(5);
     }
-    fun(500);
-    reps = random(0, 5);
+    holdup(500);
+    reps = random(0, 5); //shows the slider a random amount of times
     for(uint8_t x=0; x<reps; x++){
       for(uint8_t x=0; x<33; x++){
         matrix.fillRect(0, 0, 64, 16, matrix.color565(0, 0, 0));
         
         drawSlider(sliderSelect, 32-x, 0);
         matrix.show();
-        fun(5);
+        holdup(5);
       }
-      fun(500);
+      holdup(500);
       for(uint8_t x=0; x<33; x++){
         matrix.fillRect(0, 0, 64, 16, matrix.color565(0, 0, 0));
         
         drawSlider(sliderSelect, x, 0);
         matrix.show();
-        fun(5);
+        holdup(5);
       }
-      fun(500);
+      holdup(500);
     }
     for(uint8_t x=0; x<95; x++){
         matrix.fillRect(0, 0, 64, 16, matrix.color565(0, 0, 0));
 
         drawSlider(sliderSelect, 32-x, 0);
         matrix.show();
-        fun(5);
+        holdup(5);
     }
   }
   
@@ -146,10 +146,10 @@ void loop() {
     randSelect = random(1, 3);
     if(randSelect == 1){
       draw_we_love_animated();
-      fun(dlength);
+      holdup(dlength);
     }else{
       drawScreen(0, 2); 
-      fun(dlength);
+      holdup(dlength);
     }
   }
   if(dispType == 3){
@@ -157,38 +157,38 @@ void loop() {
     if(randSelect == 1){
       drawScreen(0, 3); 
       //draw_swarm_animated();
-      fun(dlength);
+      holdup(dlength);
     }else{
       drawScreen(0, 3); 
-      fun(dlength);
+      holdup(dlength);
     }
   }
 
   if(dispType == 4){
     draw_we_love_animated();
-    fun(dlength);
+    holdup(dlength);
   }
 
   if(dispType == 5){
     draw_swarm_animated();
-    fun(dlength);
+    holdup(dlength);
   }
 
   if(dispType == 6){
     drawScrolltext("HEY, THERE");
-    fun(1000);
+    holdup(1000);
   }
 
   if(dispType == 7){
     //drawSponsors();
-    //drawDeclarationFull();
-    fun(1000);
+    //drawDeclarationFull(); //best function
+    holdup(1000);
   }
 
     if(dispType == 8){
     drawSponsors();
     //drawDeclaration();
-    fun(1000);
+    holdup(1000);
   }
   
 

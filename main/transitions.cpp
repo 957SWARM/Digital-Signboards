@@ -8,7 +8,7 @@ extern Adafruit_Protomatter matrix;
 extern int clearType;
 extern double animType;
 
-extern void fun(int del_len);
+extern void holdup(int del_len);
 
 void clear_screen(uint8_t R, uint8_t G, uint8_t B, uint8_t anim_del_len, int message){
   clearType = random(1, 3);
@@ -24,21 +24,21 @@ void clear_screen(uint8_t R, uint8_t G, uint8_t B, uint8_t anim_del_len, int mes
            matrix.drawLine(x, 0, x, 16, matrix.color565(R, G, B));
            matrix.drawLine(x+32, 0, x+32, 16, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }
       }else if(animType == 2){ //Circle from center of each board
         for(uint8_t x=0; x<33; x++) { //2 circles from center of each board
            matrix.fillCircle(16, 8, x, matrix.color565(R, G, B));
            matrix.fillCircle(48, 8, x, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }
       }else if(animType == 3){ //Rectangle from bottom right corner
         for(uint8_t x=0; x<33; x++) {
            matrix.fillRect(16-x, 8-x, 16+x, 8+x, matrix.color565(R, G, B));
            matrix.fillRect(48-x, 8-x, 48+x, 8+x, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }    
       }else if(animType == 4){ 
         for(uint8_t x=0; x<33; x++) { //lines from corners
@@ -47,7 +47,7 @@ void clear_screen(uint8_t R, uint8_t G, uint8_t B, uint8_t anim_del_len, int mes
            matrix.drawLine(32, 0, 32+x, 16, matrix.color565(R, G, B));
            matrix.drawLine(64, 16, 64-x, 0, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }  
       }else if(animType == 5){
         for(uint8_t x=0; x<33; x++) { //lines from corners 2
@@ -56,20 +56,20 @@ void clear_screen(uint8_t R, uint8_t G, uint8_t B, uint8_t anim_del_len, int mes
            matrix.drawLine(32, 16, 32+x, 0, matrix.color565(R, G, B));
            matrix.drawLine(64, 0, 64-x, 16, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }  
       }else if(animType == 6){ //4 large rectangles, each covering half a board
         for(uint8_t y=0; y<17; y++) {
            matrix.fillRect(0, 0, 16, y, matrix.color565(R, G, B));
            matrix.fillRect(48, 0, 64, y, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }
         for(uint8_t y=0; y<17; y++) {
            matrix.fillRect(16, 0, 32, y, matrix.color565(R, G, B));
            matrix.fillRect(32, 0, 48, y, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         } 
       }else if(animType == 7){ //3 circles, from the edges of each board
         for(uint8_t x=0; x<33; x++) {
@@ -77,7 +77,7 @@ void clear_screen(uint8_t R, uint8_t G, uint8_t B, uint8_t anim_del_len, int mes
            matrix.fillCircle(32, 8, x, matrix.color565(R, G, B));
            matrix.fillCircle(64, 8, x, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }
       }else if(animType == 8){ //Lines from all 4 corners
         for(uint8_t x=0; x<33; x++) {
@@ -90,7 +90,7 @@ void clear_screen(uint8_t R, uint8_t G, uint8_t B, uint8_t anim_del_len, int mes
            matrix.drawLine(32, 0, 32+x, 16, matrix.color565(R, G, B));
            matrix.drawLine(64, 16, 64-x, 0, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         } 
       }else if(animType == 9){ //Windshield wipers
         for(uint8_t y=0; y<17; y++) {
@@ -99,7 +99,7 @@ void clear_screen(uint8_t R, uint8_t G, uint8_t B, uint8_t anim_del_len, int mes
            matrix.drawLine(48, 0, 32, y, matrix.color565(R, G, B));
            matrix.drawLine(49, 0, 64, y, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }
         for(uint8_t x=0; x<17; x++) {
            matrix.drawLine(16, 0, x, 16, matrix.color565(R, G, B));
@@ -107,7 +107,7 @@ void clear_screen(uint8_t R, uint8_t G, uint8_t B, uint8_t anim_del_len, int mes
            matrix.drawLine(48, 0, 32+x, 16, matrix.color565(R, G, B));
            matrix.drawLine(49, 0, 64-x, 16, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }
       }else if(animType == 10){ //Vertical staggered lines
         for(uint8_t y=0; y<17; y++) {
@@ -145,7 +145,7 @@ void clear_screen(uint8_t R, uint8_t G, uint8_t B, uint8_t anim_del_len, int mes
            matrix.drawLine(62, 0, 62, y, matrix.color565(R, G, B));
            matrix.drawLine(64, 0, 64, y, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }
         for(uint8_t y=0; y<17; y++) {
            matrix.drawLine(1, 0, 1, y, matrix.color565(R, G, B));
@@ -181,21 +181,21 @@ void clear_screen(uint8_t R, uint8_t G, uint8_t B, uint8_t anim_del_len, int mes
            matrix.drawLine(61, 0, 61, y, matrix.color565(R, G, B));
            matrix.drawLine(63, 0, 63, y, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }
       }else if(animType == 11){ //Slant angled towards top left
         for(uint8_t x=0; x<50; x++) {
            matrix.drawLine(x-16, 0, x, 16, matrix.color565(R, G, B));
            matrix.drawLine(80-x, 0, 64-x, 16, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }
       }else if(animType == 12){ //Slant angled towards top right
         for(uint8_t x=0; x<50; x++) {
            matrix.drawLine(x, 0, x-16, 16, matrix.color565(R, G, B));
            matrix.drawLine(64-x, 0, 80-x, 16, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }
       }else if(animType == 13){ //Horizontal staggered lines
         for(uint8_t x=0; x<33; x++) {
@@ -235,7 +235,7 @@ void clear_screen(uint8_t R, uint8_t G, uint8_t B, uint8_t anim_del_len, int mes
            matrix.drawLine(32, 30, 32+x, 30, matrix.color565(R, G, B));
            matrix.drawLine(32, 32, 32+x, 32, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }
         for(uint8_t x=0; x<33; x++) {
            matrix.drawLine(0, 1, x, 1, matrix.color565(R, G, B));
@@ -272,7 +272,7 @@ void clear_screen(uint8_t R, uint8_t G, uint8_t B, uint8_t anim_del_len, int mes
            matrix.drawLine(32, 29, 32+x, 29, matrix.color565(R, G, B));
            matrix.drawLine(32, 31, 32+x, 31, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }
       }else if(animType == 14){ //gradient trans
         R = 0;
@@ -283,33 +283,33 @@ void clear_screen(uint8_t R, uint8_t G, uint8_t B, uint8_t anim_del_len, int mes
            matrix.drawLine(x, 0, x, 16, matrix.color565(R, G, B));
            matrix.drawLine(x+32, 0, x+32, 16, matrix.color565(R, G, B));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }
-        fun(1000);
+        holdup(1000);
         for(uint8_t x=0; x<32; x++) {
            matrix.drawLine(x, 0, x, 16, matrix.color565(0, 0, 0));
            matrix.drawLine(x+32, 0, x+32, 16, matrix.color565(0, 0, 0));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }
       }else if(animType == 15){ //random pride flag
         for(uint8_t y=0; y<17; y++){
           matrix.fillRect(0, 0, 64, y, matrix.color565(0, 0, 0));
           matrix.show();
-          fun(5);
+          holdup(5);
         }
         for(uint8_t y=0; y<17; y++){
           //select_pride();
           matrix.fillRect(0, 0, 64, 16-y, matrix.color565(0, 0, 0));
           matrix.show();
-          fun(5);
+          holdup(5);
         }
-        fun(1000);
+        holdup(1000);
         for(uint8_t x=0; x<32; x++) {
            matrix.drawLine(x, 0, x, 16, matrix.color565(0, 0, 0));
            matrix.drawLine(x+32, 0, x+32, 16, matrix.color565(0, 0, 0));
            matrix.show();
-           fun(anim_del_len);
+           holdup(anim_del_len);
         }
       }
   }
@@ -319,19 +319,19 @@ void clear_screen(uint8_t R, uint8_t G, uint8_t B, uint8_t anim_del_len, int mes
       for(uint8_t x=0; x<65; x++){
         select_disp(message, 0-x, 0);
         matrix.show();
-        fun(10);
+        holdup(10);
       }
     }else if(animType == 2){
       for(uint8_t y=0; y<17; y++){
         select_disp(message, 0, y);
         matrix.show();
-        fun(10);
+        holdup(10);
       }
     }else if(animType == 3){
       for(uint8_t y=0; y<17; y++){
         select_disp(message, 0, 0-y);
         matrix.show();
-        fun(10);
+        holdup(10);
       }
     }
   }
@@ -355,28 +355,28 @@ void drawScreen(int drawType, int message){
         select_disp(message, 0, 0);
         matrix.fillRect(0, 0, 64, 16-y, matrix.color565(0, 0, 0));
         matrix.show();
-        fun(5);
+        holdup(5);
       }
     }else if(animType == 2){ //Draw from center of both boards
       for(uint8_t x=0; x<65; x++){
         select_disp(message, 0, 0);
         matrix.fillCircle(32, 8, 32-x, matrix.color565(0, 0, 0));
         matrix.show();
-        fun(5);
+        holdup(5);
       }
     }else if(animType == 3){ //Draw from right side of both boards
       for(uint8_t x=0; x<65; x++){
         select_disp(message, 0, 0);
         matrix.fillRect(0, 0, (64-x), 16, matrix.color565(0, 0, 0));
         matrix.show();
-        fun(2);
+        holdup(2);
       }
     }else if(animType == 4){
       for(uint8_t x=0; x<33; x++){
         select_disp(message, 0, 0);
         matrix.fillRect(x, 0, 64, 16, matrix.color565(0, 0, 0));
         matrix.show();
-        fun(2);
+        holdup(2);
       }
     }
   }else if(drawType == 2){ //slide into view
@@ -385,19 +385,19 @@ void drawScreen(int drawType, int message){
         for(uint8_t x=0; x<65; x++){
         select_disp(message, x-64, 0);
         matrix.show();
-        fun(10);
+        holdup(10);
       }
     }else if(animType == 2){
       for(uint8_t y=0; y<17; y++){
         select_disp(message, 0, 16-y);
         matrix.show();
-        fun(10);
+        holdup(10);
       }
     }else if(animType == 3){
       for(uint8_t y=0; y<17; y++){
         select_disp(message, 0, y-16);
         matrix.show();
-        fun(10);
+        holdup(10);
       }
     }
     

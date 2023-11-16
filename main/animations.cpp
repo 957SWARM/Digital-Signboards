@@ -16,7 +16,7 @@ extern int length;
 int numberStartX;
 extern int dlength;
 
-extern void fun(int del_len);
+extern void holdup(int del_len);
 
 void draw_we_love_animated(void){
   
@@ -33,15 +33,15 @@ void draw_we_love_animated(void){
     
     drawHeart(86-x, 0); //Draw 2 Minecraft hearts, slide in from right
     if(x > 54){
-      drawHeart(64-(x-54), 0);
+      drawHeart(64-(x-54), 0); // <3
     }
 
-    matrix.setTextColor(matrix.color565(255,255,255));
+    matrix.setTextColor(matrix.color565(255,255,255)); //this makes the text color white (what a shocker)
 
     
-    length = ap1d.length();
-    
-    if(length == 4) {
+    length = ap1d.length(); 
+    //this function finds the length of ap1d (aka the team number) and centers it. The team number could be two, three, or four numbers long.  
+    if(length == 4) { 
       numberStartX = 5;
     }else if(length == 3) {
       numberStartX = 7;
@@ -138,7 +138,7 @@ void draw_we_love_animated(void){
     }
     
     matrix.show();
-    fun(10);
+    holdup(10);
   }
 }
 
@@ -150,7 +150,7 @@ void draw_swarm_animated(void){
       matrix.setCursor(1, 16-x);
       matrix.print("S");
       matrix.show();
-      fun(100);
+      holdup(100);
     }else if(x < 32){
       matrix.setTextColor(matrix.color565(255,255,0)); //set text color to yellow
       matrix.setCursor(1, 0);
@@ -158,7 +158,7 @@ void draw_swarm_animated(void){
       matrix.setCursor(7, 32-x);
       matrix.print("W");
       matrix.show();
-      fun(100);
+      holdup(100);
       
     }else{
       matrix.setTextColor(matrix.color565(255,255,0)); //set text color to yellow
@@ -180,6 +180,6 @@ void draw_swarm_animated(void){
     
   }
   matrix.show();
-  fun(dlength);
+  holdup(dlength);
   
 }
