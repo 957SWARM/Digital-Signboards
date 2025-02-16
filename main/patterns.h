@@ -14,4 +14,10 @@ void drawBee(); //Drawn by Amaryllis Z.
 void drawBeeHoney(); //Drawn by Amaryllis Z.
 void drawFlyingBee(int x_off, int y_off); //Drawn by Amaryllis Z.
 void draw957(); //Drawn by Amaryllis Z.
+void draw957Pride(); //Drawn by Arden F.
+void drawJellyfishAnim(); //Drawn by Sam Bishop
+void drawEvilJellyAnim(); //Drawn by Jacoby Kalita
+void drawShallowSea(); //Drawn by Dillon P.
+void drawDeepSea(); //Drawn by Dillon P.
+void drawJelly(); //Drawn by Braedon Kalita
 #endif

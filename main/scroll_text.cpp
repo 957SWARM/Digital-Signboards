@@ -13,11 +13,12 @@ extern int str_len;
 extern void holdup(int del_len);
 
 void drawSponsors (void){
-  scrolltext = "          West Albany High School/South Albany High School/Albany Public Schools Foundations (APSF)/Central and Takena Elementary/American Legion Post 10 Albany/American Legion Auxiliary/CASA/Pacific Cast Technologies/Cycle Oregon/LBCC Mechatronics/Samaritan Health Services/Selmet/Albany Optimists/Andrew & Larson Family/Bottle Drop/Walmart/Costco/Red Robin/Chipotle/HP Inc./STEM/CTE HUB/City of Albany Economics/Red Hawks Flight Club/Linn County Fair/Benton County Fair/Albany Parks & Rec/FIRST FORCE/FIRST/Auto Desk/Oregon Robotics Tournament & Outreach Programs (ORTOP)/Argosy/No Dinx/Batteries Plus/Ram Steelco/Central Welding Supply/Burchams Metals/THANK YOU!!!!";
+  scrolltext = "          West Albany High School/South Albany High School/Albany Public Schools Foundation/LBCC Mechatronics/K & D Engineering/No Dinx/Christmas Storybook Land/Oregon Community Foundation/Albany Optimist Club/American Legion Post 10 Albany/American Legion Auxiliary/HP/Linn County Fair/Benton County Fair/Albany Parks & Rec/Burcham’s Metals/Michelle Ramage/Jason Yutzie/Nathan Guthrie/Coastal Farm and Ranch/Wheeler Family Foundation/Takena and Central PTC/Selmet/Pacific Cast Technologies/See's Candies/Red Robin/Chipotle/Panda Express/Burgerville/Viper Northwest/Bottle Drop/First/First Force/Sherwin Williams/ORTOP/THANK YOU!!!!";
   stlength = scrolltext.length();
   runs = 0;
   stRuns = 0;
-  for(uint8_t x=0; x<(900); x++){
+
+  for(uint8_t x=0; x<(640); x++){  //The second variable "x<(640)" and the ineqality in line 62 ("if(runs > 640)") should be a number slightly above the amoung of characters in "scrolltext"
       for(uint8_t x=0; x<6; x++){
         
         matrix.fillRect(0, 0, 64, 16, matrix.color565(0, 0, 0));
@@ -58,14 +59,14 @@ void drawSponsors (void){
       }
       stRuns++;
       runs++;
-      if(runs > 915){
+      if(runs > 640){
         break;
       }
     }
 }
 
 void drawScrolltext(String scrolltextString){
-  //2022:
+  //2022: (messages from other teams used in 2022 and saved for archival purposes. don't use.)
   //scrolltext = "      Huzzah! how long can we make this?";
   //scrolltext = "      Lakemonsters love SWARM! ~ SAFETY THIRD!";
   //scrolltext = "      YE - 4662 ~~~ Hi Mom! Hi Dad! - ORF";
@@ -99,28 +100,16 @@ void drawScrolltext(String scrolltextString){
 
   //2023:
 randomSeed(analogRead(5));
-int randNumber2ElectricBoogaloo = random(1, 7); //last number should be the number of scrolltext messages you want shown.
-if (randNumber2ElectricBoogaloo == 1){
-  scrolltext = "       WATER GAME 2025!!!!!!!!";
-}
-if (randNumber2ElectricBoogaloo == 2){
-  scrolltext = "       The 'W' in SWARM stands for West!";
-}
-if (randNumber2ElectricBoogaloo == 3){
-  scrolltext = "       The 'W' in SWARM stands for Winner!";
-}
-if (randNumber2ElectricBoogaloo == 4){
-  scrolltext = "       Saftey glasses save lives!";
-}
-if (randNumber2ElectricBoogaloo == 5){
-  scrolltext = "      The 'S' in SWARM stands for South!";
-}
-if (randNumber2ElectricBoogaloo == 6){
-  scrolltext = "       Bees at work..." ;
-}
-if (randNumber2ElectricBoogaloo == 7){
-  scrolltext = "       Testing, testing, 1, 2, 3...is this thing on?";
-}
+int randNumber2ElectricBoogaloo = random(1, 7); //last number should be the number of scrolltext messages you want shown + 1.
+String scrolltextOptions[] = {
+  "       WATER GAME 2025!!!!!!!!",
+  "       The 'W' in SWARM stands for West!",
+  "       Saftey glasses save eyes!",
+  "       The 'S' in SWARM stands for South!",
+  "       Bees arn't the only thing that SWARM!",
+  "       Testing, testing, 1, 2, 3...is this thing on?"
+};
+  scrolltext = scrolltextOptions[randNumber2ElectricBoogaloo];
   matrix.setTextSize(2);
 
   //Split serial input into parts by each comma in the string

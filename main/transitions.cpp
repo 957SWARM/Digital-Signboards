@@ -2,22 +2,57 @@
 #include <Adafruit_Protomatter.h>
 #include "patterns.h"
 #include "transitions.h"
+#include <cmath>
 
 extern Adafruit_Protomatter matrix;
 
 extern int clearType;
 extern double animType;
+extern long randomNumber1;
+extern long randomNumber2;
 
 extern void holdup(int del_len);
 
+bool isScreenBlack(uint16_t * buf){
+  for (int isPixelBlack = 0; isPixelBlack <= 1023; isPixelBlack ++){
+    if (buf[isPixelBlack] != 0){
+      return false;
+    }
+  }
+  return true;
+}
+
+void fizzle(){
+  uint16_t * buf = matrix.getBuffer();
+  buf[0];
+  while (!isScreenBlack(buf)){
+    uint16_t * buf = matrix.getBuffer();
+    buf[0];
+    int randPixel = random(0, 1023);
+    while (buf[randPixel] == 0){
+      randPixel++;
+      if (randPixel == 1024){
+        randPixel = 0;
+      }
+    }
+    buf[randPixel] = 0;
+    //int x = floor(randPixel / 64);
+    //int y = randPixel % 64;
+    //matrix.drawPixel(x, y, matrix.color565(0, 0, 0));
+    matrix.show();
+  }
+}
+
 void clear_screen(uint8_t R, uint8_t G, uint8_t B, uint8_t anim_del_len, int message){
-  clearType = random(1, 3);
-  //clearType = 2;
+ 
+  randomSeed(randomNumber1 * randomNumber2);
+  //clearType = random(1, 3);
+  clearType = 1;
   //firstLoopDone = true;
   if(clearType == 1){
       //Clear screen (but *a*n*i*m*a*t*e*d*)
-      animType = random(1, 15);
-      //animType = 15;
+      animType = random(1, 17);
+      //animType = 7;
   
       if(animType == 1){ //Left to Right straight line clear
         for(uint8_t x=0; x<33; x++) { //simple bar from side
@@ -311,10 +346,13 @@ void clear_screen(uint8_t R, uint8_t G, uint8_t B, uint8_t anim_del_len, int mes
            matrix.show();
            holdup(anim_del_len);
         }
+      }else if(animType == 16){
+        fizzle();
       }
+
   }
   if(clearType == 2){
-    //animType = random(1, 4);
+    animType = random(1, 4);
     if(animType == 1){
       for(uint8_t x=0; x<65; x++){
         select_disp(message, 0-x, 0);

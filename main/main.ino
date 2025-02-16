@@ -3,23 +3,26 @@
 #include "animations.h"
 #include "scroll_text.h"
 #include <Wire.h>
+//#include <random>
+#include <iostream>
 #include <Adafruit_Protomatter.h>
 
 int randNumber = 0;
-//Set up pins correctly
-uint8_t rgbPins[]  = {2, 3, 4, 5, 6, 7};
-uint8_t addrPins[] = {A0, A1, A2, A3};
-uint8_t clockPin   = 8;
-uint8_t latchPin   = 10;
-uint8_t oePin      = 9;
+// Use FeatherWing pinout
+  uint8_t rgbPins[]  = {8, 7, 9, 11, 10, 12};
+  uint8_t addrPins[] = {25, 24, 29, 28};
+  uint8_t clockPin   = 13;
+  uint8_t latchPin   = 1;
+  uint8_t oePin      = 0;
 
+// Create a 32-pixel tall, 64 pixel wide matrix with the defined pins
 Adafruit_Protomatter matrix(
   64,          // Width of matrix (or matrix chain) in pixels
   4,           // Bit depth, 1-6
   1, rgbPins,  // # of matrix chains, array of 6 RGB pins for each
   3, addrPins, // # of address pins (height is inferred), array of pins
   clockPin, latchPin, oePin, // Other matrix control pins
-  true);      // No double-buffering here (see "doublebuffer" example)
+  true);      // Double-buffering here (see "doublebuffer" example)
 
 
 //Variables used for the old drawing style and animations
@@ -67,25 +70,33 @@ int prideSelect = 0;
 //Scrolltext (st) stuff 
 int stRuns = 0;
 
+//----------------------------\\
+
+int randomNumber1 = 3;
+int randomNumber2 = 3;
+
+
+
 void setup() {
 
-  ap1d = "B#";  //These are the "I <3 [Team number]" drawings. Make ap1d and ap2d equal to the alliance partner numbers.
-  ap2d = "PIT"; //Here is a list of generic text in place of team numbers, for use during events like outreach: PIT, FRC, YOU, 957, BEES, etc. Must be 2-4 characters.
+  ap1d = "2025";  //These are the "WE <3 [Team number]" drawings. Make ap1d and ap2d equal to the alliance partner numbers.
+  ap2d = "FRC"; //Here is a list of generic text in place of team numbers, for use during events like outreach: PIT, FRC, YOU, 957, BEES, etc. Must be 2-4 characters
   
-  Serial.begin(9600);
+  randomSeed(analogRead(A0));  //reads an unused pin to get a pesudorandom number
 
   // Initialize matrix...
   ProtomatterStatus status = matrix.begin();
-  Serial.print("Protomatter begin() status: ");
-  Serial.println((int)status);
+  //Serial.print("Protomatter begin() status: ");
+  //Serial.println((int)status);
   if(status != PROTOMATTER_OK) {
     // DO NOT CONTINUE if matrix setup encountered an error.
     for(;;);
   }
-
-  matrix.show();
+  Serial.begin(4800);
+ 
 
   //Wire.begin();
+ 
  
 }
 
@@ -95,10 +106,8 @@ void holdup(int del_len){
 }
 
 void loop() {
-
   if(dispType == 1){
     //sliderSelect = random(1, 3);
-    randomSeed(analogRead(5)); //Reads pin 5 and pulls a number from there. This pin cannot be connected to anything in order to properly generate a pseudo-random number.
     sliderRand = random(1, 12);
     if(sliderRand == 3){
       sliderSelect = 2;
@@ -186,19 +195,27 @@ void loop() {
   if(dispType == 7){
     //drawSponsors();
     //drawDeclarationFull(); //best function
-    randomSeed(analogRead(5));
-    randNumber = random(1,4);
+    //std::uniform_real_distribution<double> dist(1, 5);   //generates a random number 1-5 according to the uniform real distribution
+    //randNumber = dist(mt);
+    randomNumber1 = random(1, 7);
+    Serial.println(randNumber);
     if (randNumber == 1){
-      drawBeehive();
+      drawShallowSea();
     }
     if (randNumber == 2){
       drawBee();
     }
     if (randNumber == 3){
-      drawBeeHoney();
+      drawDeepSea();
     }
     if (randNumber == 4){
       draw957();
+    }
+    if (randNumber == 5){
+      draw957Pride();
+    }
+    if (randNumber == 6){
+      drawJelly();
     }
     holdup(8000); 
     /*drawFirework();
@@ -213,7 +230,6 @@ void loop() {
   }
 
     if(dispType == 8){
-      randomSeed(analogRead(5));
       randNumber = random(1,100);
     if (randNumber == 1){
       drawDeclarationFull(); //This function gives a 1% chance of showing the entire Decleration of Independence in scrolltext. This is the best function in this program.
@@ -237,12 +253,12 @@ void loop() {
     } 
   }
 
-  Serial.println("");
-  Serial.println("Before");
-  Serial.println("dispType");
-  Serial.println(dispType);
-  Serial.println("dispTypePrev");
-  Serial.println(dispTypePrev);
+  //ln("");
+  //Serial.println("Before");
+  //Serial.println("dispType");
+  //Serial.println(dispType);
+  //Serial.println("dispTypePrev");
+  //Serial.println(dispTypePrev);
   dispTypePrev = dispType;
   
   if(dispTypePrev == 1){
@@ -269,11 +285,11 @@ void loop() {
   if(dispTypePrev == 8){
     dispType = 1;
   }
-  Serial.println("");
-  Serial.println("After");
-  Serial.println("dispType");
-  Serial.println(dispType);
-  Serial.println("dispTypePrev");
-  Serial.println(dispTypePrev);
+  //Serial.println("");
+  //Serial.println("After");
+  //Serial.println("dispType");
+  //Serial.println(dispType);
+  //Serial.println("dispTypePrev");
+  //Serial.println(dispTypePrev);
 
 }
