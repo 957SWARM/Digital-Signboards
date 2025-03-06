@@ -13,7 +13,7 @@ extern int str_len;
 extern void holdup(int del_len);
 
 void drawSponsors (void){
-  scrolltext = "          West Albany High School/South Albany High School/Albany Public Schools Foundation/LBCC Mechatronics/K & D Engineering/No Dinx/Christmas Storybook Land/Oregon Community Foundation/Albany Optimist Club/American Legion Post 10 Albany/American Legion Auxiliary/HP/Linn County Fair/Benton County Fair/Albany Parks & Rec/Burcham’s Metals/Michelle Ramage/Jason Yutzie/Nathan Guthrie/Coastal Farm and Ranch/Wheeler Family Foundation/Takena and Central PTC/Selmet/Pacific Cast Technologies/See's Candies/Red Robin/Chipotle/Panda Express/Burgerville/Viper Northwest/Bottle Drop/First/First Force/Sherwin Williams/ORTOP/THANK YOU!!!!";
+  scrolltext = "          West Albany High School/South Albany High School/Albany Public Schools Foundation/LBCC Mechatronics/K & D Engineering/No Dinx/Christmas Storybook Land/Oregon Community Foundation/Albany Optimist Club/American Legion Post 10 Albany/American Legion Auxiliary/HP/Linn County Fair/Benton County Fair/Albany Parks & Rec/Burchams Metals/Michelle Ramage/Jason Yutzie/Nathan Guthrie/Coastal Farm and Ranch/Wheeler Family Foundation/Takena and Central PTC/Selmet/Pacific Cast Technologies/See's Candies/Red Robin/Chipotle/Panda Express/Burgerville/Viper Northwest/Bottle Drop/First/First Force/Sherwin Williams/ORTOP/THANK YOU!!!!";
   stlength = scrolltext.length();
   runs = 0;
   stRuns = 0;
@@ -99,8 +99,7 @@ void drawScrolltext(String scrolltextString){
   //scrolltext = "      The 'S' in SWARM stands for South!";
 
   //2023:
-randomSeed(analogRead(5));
-int randNumber2ElectricBoogaloo = random(1, 7); //last number should be the number of scrolltext messages you want shown + 1.
+int randNumber2ElectricBoogaloo = random(1, 8); //last number should be the number of scrolltext messages you want shown + 1.
 String scrolltextOptions[] = {
   "       WATER GAME 2025!!!!!!!!",
   "       The 'W' in SWARM stands for West!",
@@ -108,6 +107,8 @@ String scrolltextOptions[] = {
   "       The 'S' in SWARM stands for South!",
   "       Bees arn't the only thing that SWARM!",
   "       Testing, testing, 1, 2, 3...is this thing on?"
+ // "       The Game  "
+  "       SWARM has been trying to reach you about your car's extended warranty."
 };
   scrolltext = scrolltextOptions[randNumber2ElectricBoogaloo];
   matrix.setTextSize(2);

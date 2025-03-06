@@ -6,6 +6,8 @@
 //#include <random>
 #include <iostream>
 #include <Adafruit_Protomatter.h>
+#include "LittleFS.h" 
+#include <VFS.h>
 
 int randNumber = 0;
 // Use FeatherWing pinout
@@ -74,7 +76,9 @@ int stRuns = 0;
 
 int randomNumber1 = 3;
 int randomNumber2 = 3;
+int seed = 0;
 
+int printStep = 0;
 
 
 void setup() {
@@ -82,7 +86,28 @@ void setup() {
   ap1d = "2025";  //These are the "WE <3 [Team number]" drawings. Make ap1d and ap2d equal to the alliance partner numbers.
   ap2d = "FRC"; //Here is a list of generic text in place of team numbers, for use during events like outreach: PIT, FRC, YOU, 957, BEES, etc. Must be 2-4 characters
   
-  randomSeed(analogRead(A0));  //reads an unused pin to get a pesudorandom number
+  LittleFS.begin();
+  
+  //reading random file:
+  File file = LittleFS.open("/rand.txt", "r");
+  if(!file){
+    randomSeed(seed);
+  }else{
+    while(file.available()){
+      String fromFile = file.readString();
+      seed = fromFile.toInt();
+    }
+  }
+  randomSeed(seed);  //sets the seed used for randomization to "seed" (the number in the file)
+  file.close();
+  delay(100);
+
+  //writing random file
+  File writeFile = LittleFS.open("/rand.txt", "w");
+  writeFile.print(seed + 1); 
+  writeFile.close();
+  delay(100);
+  //LittleFS.end(); 
 
   // Initialize matrix...
   ProtomatterStatus status = matrix.begin();
@@ -93,6 +118,7 @@ void setup() {
     for(;;);
   }
   Serial.begin(4800);
+  
  
 
   //Wire.begin();
@@ -106,6 +132,10 @@ void holdup(int del_len){
 }
 
 void loop() {
+  Serial.println("Printing!!!!");
+  Serial.println(seed);
+  Serial.println("printStep:");
+  Serial.println(printStep);
   if(dispType == 1){
     //sliderSelect = random(1, 3);
     sliderRand = random(1, 12);
@@ -200,7 +230,7 @@ void loop() {
     randomNumber1 = random(1, 7);
     Serial.println(randNumber);
     if (randNumber == 1){
-      drawShallowSea();
+      drawJelly();
     }
     if (randNumber == 2){
       drawBee();
@@ -215,7 +245,7 @@ void loop() {
       draw957Pride();
     }
     if (randNumber == 6){
-      drawJelly();
+      drawShallowSea();
     }
     holdup(8000); 
     /*drawFirework();

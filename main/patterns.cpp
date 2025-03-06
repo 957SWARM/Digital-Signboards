@@ -665,7 +665,6 @@ void drawFirework() {
   int R = 0;
   int G = 0;
   int B = 0;
-  srand(analogRead(5));  //reads the voltage of an EMPTY pin to get a "random" number that is used for the seed. This seed determines the output for every "random()" function.
   int randXPos = random(0, 63); //random X position. Change to "31" if only using one board.
   int randYPos = random(0, 15); // random Y position
   int oneInThree = random(1,3); //the variabel "oneInThree" will be used for the 3 following "if" statements to ensure that one RGB value will always equal 255. This makes sure the first firework color is as bright as possible. 

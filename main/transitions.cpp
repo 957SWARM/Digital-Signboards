@@ -8,8 +8,6 @@ extern Adafruit_Protomatter matrix;
 
 extern int clearType;
 extern double animType;
-extern long randomNumber1;
-extern long randomNumber2;
 
 extern void holdup(int del_len);
 
@@ -45,7 +43,6 @@ void fizzle(){
 
 void clear_screen(uint8_t R, uint8_t G, uint8_t B, uint8_t anim_del_len, int message){
  
-  randomSeed(randomNumber1 * randomNumber2);
   //clearType = random(1, 3);
   clearType = 1;
   //firstLoopDone = true;
