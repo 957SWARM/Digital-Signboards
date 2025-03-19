@@ -1,4 +1,3 @@
-
 #include <Adafruit_Protomatter.h>
 #include "patterns.h"
 #include "transitions.h"

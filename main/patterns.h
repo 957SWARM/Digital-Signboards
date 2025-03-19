@@ -1,6 +1,13 @@
 #ifndef PATTERNS_H
 #define PATTERNS_H
 
+typedef struct RGB {
+  double r;
+  double g;
+  double b;
+} RGB;
+
+struct RGB colorConverter(int hexValue);
 void drawFRC(int x_off, int y_off); //Drawn by Alex Antrim
 void drawAmogus(int x_off, int y_off); //Drawn by Alex Antrim
 void drawHeart(int x_off, int y_off); //Drawn by Miles Wilson

@@ -103,13 +103,13 @@ int randNumber2ElectricBoogaloo = random(1, 8); //last number should be the numb
 String scrolltextOptions[] = {
   "       WATER GAME 2025!!!!!!!!",
   "       The 'W' in SWARM stands for West!",
-  "       Saftey glasses save eyes!",
+  "       Safety glasses save eyes!",
   "       The 'S' in SWARM stands for South!",
   "       Bees arn't the only thing that SWARM!",
-  "       Testing, testing, 1, 2, 3...is this thing on?"
- // "       The Game  "
-  "       SWARM has been trying to reach you about your car's extended warranty."
+  "       Testing, testing, 1, 2, 3...is this thing on?",
+  "       SWARM has been trying to reach you about your car's extended warranty.",
 };
+ // "       The Game  "
   scrolltext = scrolltextOptions[randNumber2ElectricBoogaloo];
   matrix.setTextSize(2);
 

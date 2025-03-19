@@ -188,8 +188,13 @@ void loop() {
   if(dispType == 2){
     randSelect = random(1, 3);
     if(randSelect == 1){
-      draw_we_love_animated();
-      holdup(dlength);
+      //draw_we_love_animated();
+    draw_we_love_image_a1(); //use this when allience partner with image exists. this will read ap1d.
+    holdup(dlength);
+    draw_we_love_image_a2(); //use this when another allience partner with image exists. this will read ap2d.
+    holdup(dlength);
+    draw_we_love_animated(); //use this if one or both of the alliance partners does not have an image. this reads ap1d and ap2d.
+    holdup(dlength);
     }else{
       drawScreen(0, 2); 
       holdup(dlength);
@@ -208,7 +213,11 @@ void loop() {
   }
 
   if(dispType == 4){
-    draw_we_love_animated();
+    draw_we_love_image_a1(); //use this when allience partner with image exists. this will read ap1d.
+    holdup(dlength);
+    draw_we_love_image_a2(); //use this when another allience partner with image exists. this will read ap2d.
+    holdup(dlength);
+    draw_we_love_animated(); //use this if one or both of the alliance partners does not have an image. this reads ap1d and ap2d.
     holdup(dlength);
   }
 
@@ -230,7 +239,7 @@ void loop() {
     randomNumber1 = random(1, 7);
     Serial.println(randNumber);
     if (randNumber == 1){
-      drawJelly();
+      drawJelly(); 
     }
     if (randNumber == 2){
       drawBee();
@@ -247,7 +256,6 @@ void loop() {
     if (randNumber == 6){
       drawShallowSea();
     }
-    holdup(8000); 
     /*drawFirework();
     holdup(10);
     drawFirework();
@@ -260,12 +268,12 @@ void loop() {
   }
 
     if(dispType == 8){
-      randNumber = random(1,100);
+      randNumber = random(1,101);
     if (randNumber == 1){
       drawDeclarationFull(); //This function gives a 1% chance of showing the entire Decleration of Independence in scrolltext. This is the best function in this program.
     }else{
-      randNumber = random (1,3);
-      if (randNumber == 1){
+      randNumber = random (1,4);
+      if (randNumber == 2){
         drawSponsors(); //This gives a 33% chance of showing our current sponsors in scrolltext. This is done to prevent the entire thing from scrolling every loop. 
       }
     }

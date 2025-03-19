@@ -23,12 +23,6 @@
 
 extern Adafruit_Protomatter matrix;
 
-typedef struct RGB {
-  double r;
-  double g;
-  double b;
-} RGB;
-
 int xval; //used to track x position for array
 int yval; //used to track y position for array
 int indx; //used to track position in an array
@@ -48,8 +42,6 @@ struct RGB colorConverter(int hexValue) {
   rgbColor.b = ((hexValue) & 0xFF);        // Extracts the BB hex
   return rgbColor;
 }
-
-
 
 // array size is 3072
 static const uint32_t JELLY[] PROGMEM  = {
