@@ -107,10 +107,14 @@ String scrolltextOptions[] = {
   "       The 'S' in SWARM stands for South!",
   "       Bees arn't the only thing that SWARM!",
   "       Testing, testing, 1, 2, 3...is this thing on?",
-  "       SWARM has been trying to reach you about your car's extended warranty.",
+  "       SWARM has been trying to reach you about your car's extended warranty."
 };
  // "       The Game  "
   scrolltext = scrolltextOptions[randNumber2ElectricBoogaloo];
+  randNumber2ElectricBoogaloo = random(1,31);
+  if(randNumber2ElectricBoogaloo == 30){
+    scrolltext = "What do you call a singing coral reef?    Choral coral.";
+  }
   matrix.setTextSize(2);
 
   //Split serial input into parts by each comma in the string

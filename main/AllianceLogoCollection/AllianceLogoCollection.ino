@@ -5,6 +5,7 @@ How to change out images for next match:
 3. Replace ap1d/ap2d with team numbers. (Around line 88 in main.ino)
 4. Go to "if(dispType == 2)" (around line 188 in main.ino) and "if(dispType == 4)" (around line 213 in main.ino).
 5. Comment out commands if necessary. 
+6. When uploading new code to bling boards, set int seed to 50 on the second bling board. 
 */ 
 
 //Jesuit Robotics

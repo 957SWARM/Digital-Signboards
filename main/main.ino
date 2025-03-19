@@ -256,6 +256,7 @@ void loop() {
     if (randNumber == 6){
       drawShallowSea();
     }
+    holdup(8000);
     /*drawFirework();
     holdup(10);
     drawFirework();
