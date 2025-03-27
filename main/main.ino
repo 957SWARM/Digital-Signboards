@@ -76,16 +76,18 @@ int stRuns = 0;
 
 int randomNumber1 = 3;
 int randomNumber2 = 3;
-int seed = 0;
+int seed = 31;
 
 int printStep = 0;
 
 
 void setup() {
 
-  ap1d = "2025";  //These are the "WE <3 [Team number]" drawings. Make ap1d and ap2d equal to the alliance partner numbers.
-  ap2d = "FRC"; //Here is a list of generic text in place of team numbers, for use during events like outreach: PIT, FRC, YOU, 957, BEES, etc. Must be 2-4 characters
-  
+  ap1d = "5468";  //These are the "WE <3 [Team number]" drawings. Make ap1d and ap2d equal to the alliance partner numbers.
+  //Next team:
+  ap2d = "9567"; //Here is a list of generic text in place of team numbers, for use during events like outreach: PIT, FRC, YOU, 957, BEES, etc. Must be 2-4 characters
+  //Next team:
+
   LittleFS.begin();
   
   //reading random file:
@@ -132,10 +134,6 @@ void holdup(int del_len){
 }
 
 void loop() {
-  Serial.println("Printing!!!!");
-  Serial.println(seed);
-  Serial.println("printStep:");
-  Serial.println(printStep);
   if(dispType == 1){
     //sliderSelect = random(1, 3);
     sliderRand = random(1, 12);
@@ -186,13 +184,12 @@ void loop() {
   
   //Animation type (leave 0 for random), message type (2 for "WE LOVE", 3 for "SWARM")
   if(dispType == 2){
-    randSelect = random(1, 3);
+    randSelect = random(1, 2);
     if(randSelect == 1){
-      //draw_we_love_animated();
     draw_we_love_image_a1(); //use this when allience partner with image exists. this will read ap1d.
     holdup(dlength);
-    draw_we_love_image_a2(); //use this when another allience partner with image exists. this will read ap2d.
-    holdup(dlength);
+    //draw_we_love_image_a2(); //use this when another allience partner with image exists. this will read ap2d.
+    //holdup(dlength);
     draw_we_love_animated(); //use this if one or both of the alliance partners does not have an image. this reads ap1d and ap2d.
     holdup(dlength);
     }else{
@@ -215,8 +212,8 @@ void loop() {
   if(dispType == 4){
     draw_we_love_image_a1(); //use this when allience partner with image exists. this will read ap1d.
     holdup(dlength);
-    draw_we_love_image_a2(); //use this when another allience partner with image exists. this will read ap2d.
-    holdup(dlength);
+    //draw_we_love_image_a2(); //use this when another allience partner with image exists. this will read ap2d.
+    //holdup(dlength);
     draw_we_love_animated(); //use this if one or both of the alliance partners does not have an image. this reads ap1d and ap2d.
     holdup(dlength);
   }
@@ -236,8 +233,8 @@ void loop() {
     //drawDeclarationFull(); //best function
     //std::uniform_real_distribution<double> dist(1, 5);   //generates a random number 1-5 according to the uniform real distribution
     //randNumber = dist(mt);
-    randomNumber1 = random(1, 7);
-    Serial.println(randNumber);
+    randNumber = random(1, 7);
+    //Serial.println(randNumber);
     if (randNumber == 1){
       drawJelly(); 
     }
@@ -270,12 +267,12 @@ void loop() {
 
     if(dispType == 8){
       randNumber = random(1,101);
-    if (randNumber == 1){
-      drawDeclarationFull(); //This function gives a 1% chance of showing the entire Decleration of Independence in scrolltext. This is the best function in this program.
-    }else{
-      randNumber = random (1,4);
+       if (randNumber == 1){
+      // drawDeclarationFull(); //This function gives a 1% chance of showing the entire Decleration of Independence in scrolltext. This is the best function in this program.
+       }else{
+      randNumber = random (1,5);
       if (randNumber == 2){
-        drawSponsors(); //This gives a 33% chance of showing our current sponsors in scrolltext. This is done to prevent the entire thing from scrolling every loop. 
+        drawSponsors(); //This gives a 25% chance of showing our current sponsors in scrolltext. This is done to prevent the entire thing from scrolling every loop. 
       }
     }
     holdup(1000);

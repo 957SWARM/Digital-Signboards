@@ -20,7 +20,7 @@ bool isScreenBlack(uint16_t * buf){
 }
 
 void fizzle(){
-  uint16_t * buf = matrix.getBuffer();
+  uint16_t * buf = matrix.getBuffer(); 
   buf[0];
   while (!isScreenBlack(buf)){
     uint16_t * buf = matrix.getBuffer();

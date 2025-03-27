@@ -54,7 +54,7 @@ void drawSponsors (void){
         matrix.print(scrolltext.charAt(stRuns + 11));
         
         matrix.show();
-        holdup(5);
+        holdup(8);
         
       }
       stRuns++;
@@ -99,21 +99,23 @@ void drawScrolltext(String scrolltextString){
   //scrolltext = "      The 'S' in SWARM stands for South!";
 
   //2023:
-int randNumber2ElectricBoogaloo = random(1, 8); //last number should be the number of scrolltext messages you want shown + 1.
+int randNumber2ElectricBoogaloo = random(1, 10); //last number should be the number of scrolltext messages you want shown + 1.
 String scrolltextOptions[] = {
   "       WATER GAME 2025!!!!!!!!",
   "       The 'W' in SWARM stands for West!",
   "       Safety glasses save eyes!",
   "       The 'S' in SWARM stands for South!",
-  "       Bees arn't the only thing that SWARM!",
+  "       Bees arn't the only animals that SWARM!",
   "       Testing, testing, 1, 2, 3...is this thing on?",
-  "       SWARM has been trying to reach you about your car's extended warranty."
+  "       SWARM has been trying to reach you about your robot's extended warranty.",
+  "       Hello! My name is Squishy.",
+  "       We are a SWARM of STORMY CHAOS!!!"
 };
  // "       The Game  "
   scrolltext = scrolltextOptions[randNumber2ElectricBoogaloo];
   randNumber2ElectricBoogaloo = random(1,31);
   if(randNumber2ElectricBoogaloo == 30){
-    scrolltext = "What do you call a singing coral reef?    Choral coral.";
+    scrolltext = "What do you call a singing coral reef?    Choral coral!";
   }
   matrix.setTextSize(2);
 
