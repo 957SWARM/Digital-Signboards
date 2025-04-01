@@ -6,10 +6,12 @@
 //#include <random>
 #include <iostream>
 #include <Adafruit_Protomatter.h>
-#include "LittleFS.h" 
+#include <LittleFS.h> 
 #include <VFS.h>
 
+
 int randNumber = 0;
+int showSponsors = 0;
 // Use FeatherWing pinout
   uint8_t rgbPins[]  = {8, 7, 9, 11, 10, 12};
   uint8_t addrPins[] = {25, 24, 29, 28};
@@ -76,16 +78,17 @@ int stRuns = 0;
 
 int randomNumber1 = 3;
 int randomNumber2 = 3;
-int seed = 31;
+int seed = 0;
 
+//testing
 int printStep = 0;
 
 
 void setup() {
 
-  ap1d = "5468";  //These are the "WE <3 [Team number]" drawings. Make ap1d and ap2d equal to the alliance partner numbers.
+  ap1d = "54321";  //These are the "WE <3 [Team number]" drawings. Make ap1d and ap2d equal to the alliance partner numbers.
   //Next team:
-  ap2d = "9567"; //Here is a list of generic text in place of team numbers, for use during events like outreach: PIT, FRC, YOU, 957, BEES, etc. Must be 2-4 characters
+  ap2d = "12345"; //Here is a list of generic text in place of team numbers, for use during events like outreach: PIT, FRC, YOU, 957, BEES, etc. Must be 2-4 characters
   //Next team:
 
   LittleFS.begin();
@@ -94,11 +97,11 @@ void setup() {
   File file = LittleFS.open("/rand.txt", "r");
   if(!file){
     randomSeed(seed);
+    printStep = 1;
   }else{
-    while(file.available()){
-      String fromFile = file.readString();
-      seed = fromFile.toInt();
-    }
+    String fromFile = file.readString();
+    seed = fromFile.toInt();
+    printStep = 2;
   }
   randomSeed(seed);  //sets the seed used for randomization to "seed" (the number in the file)
   file.close();
@@ -109,7 +112,8 @@ void setup() {
   writeFile.print(seed + 1); 
   writeFile.close();
   delay(100);
-  //LittleFS.end(); 
+  LittleFS.end(); 
+  delay(100);
 
   // Initialize matrix...
   ProtomatterStatus status = matrix.begin();
@@ -186,8 +190,8 @@ void loop() {
   if(dispType == 2){
     randSelect = random(1, 2);
     if(randSelect == 1){
-    draw_we_love_image_a1(); //use this when allience partner with image exists. this will read ap1d.
-    holdup(dlength);
+    //draw_we_love_image_a1(); //use this when allience partner with image exists. this will read ap1d.
+    //holdup(dlength);
     //draw_we_love_image_a2(); //use this when another allience partner with image exists. this will read ap2d.
     //holdup(dlength);
     draw_we_love_animated(); //use this if one or both of the alliance partners does not have an image. this reads ap1d and ap2d.
@@ -210,15 +214,15 @@ void loop() {
   }
 
   if(dispType == 4){
-    draw_we_love_image_a1(); //use this when allience partner with image exists. this will read ap1d.
-    holdup(dlength);
+    //draw_we_love_image_a1(); //use this when allience partner with image exists. this will read ap1d.
+    //holdup(dlength);
     //draw_we_love_image_a2(); //use this when another allience partner with image exists. this will read ap2d.
     //holdup(dlength);
     draw_we_love_animated(); //use this if one or both of the alliance partners does not have an image. this reads ap1d and ap2d.
     holdup(dlength);
   }
 
-  if(dispType == 5){
+  if(dispType == 5){ 
     draw_swarm_animated();
     holdup(dlength);
   }
@@ -234,7 +238,9 @@ void loop() {
     //std::uniform_real_distribution<double> dist(1, 5);   //generates a random number 1-5 according to the uniform real distribution
     //randNumber = dist(mt);
     randNumber = random(1, 7);
-    //Serial.println(randNumber);
+    //randNumber = (randNumber % 7) + 1;
+    Serial.println(seed);
+    Serial.println(printStep);
     if (randNumber == 1){
       drawJelly(); 
     }
@@ -270,9 +276,11 @@ void loop() {
        if (randNumber == 1){
       // drawDeclarationFull(); //This function gives a 1% chance of showing the entire Decleration of Independence in scrolltext. This is the best function in this program.
        }else{
-      randNumber = random (1,5);
-      if (randNumber == 2){
-        drawSponsors(); //This gives a 25% chance of showing our current sponsors in scrolltext. This is done to prevent the entire thing from scrolling every loop. 
+        if (showSponsors == 4){
+          drawSponsors(); //Every 4 cycles, our sponsors are shown. This is done to prevent the entire thing from scrolling every loop. 
+          showSponsors = 0;
+        }else{
+          showSponsors++;
       }
     }
     holdup(1000);
