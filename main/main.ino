@@ -78,7 +78,7 @@ int stRuns = 0;
 
 int randomNumber1 = 3;
 int randomNumber2 = 3;
-int seed = 0;
+int seed = 21;
 
 //testing
 int printStep = 0;
@@ -86,14 +86,14 @@ int printStep = 0;
 
 void setup() {
 
-  ap1d = "54321";  //These are the "WE <3 [Team number]" drawings. Make ap1d and ap2d equal to the alliance partner numbers.
+  ap1d = "1318";  //These are the "WE <3 [Team number]" drawings. Make ap1d and ap2d equal to the alliance partner numbers.
   //Next team:
-  ap2d = "12345"; //Here is a list of generic text in place of team numbers, for use during events like outreach: PIT, FRC, YOU, 957, BEES, etc. Must be 2-4 characters
+  ap2d = "5468"; //Here is a list of generic text in place of team numbers, for use during events like outreach: PIT, FRC, YOU, 957, BEES, etc. Must be 2-4 characters
   //Next team:
 
   LittleFS.begin();
   
-  //reading random file:
+  //read random file:
   File file = LittleFS.open("/rand.txt", "r");
   if(!file){
     randomSeed(seed);
@@ -190,12 +190,12 @@ void loop() {
   if(dispType == 2){
     randSelect = random(1, 2);
     if(randSelect == 1){
-    //draw_we_love_image_a1(); //use this when allience partner with image exists. this will read ap1d.
+    draw_we_love_image_a1(); //use this when allience partner with image exists. this will read ap1d.
+    holdup(6000);
+    draw_we_love_image_a2(); //use this when another allience partner with image exists. this will read ap2d.
+    holdup(6000);
+    //draw_we_love_animated(); //use this if one or both of the alliance partners does not have an image. this reads ap1d and ap2d.
     //holdup(dlength);
-    //draw_we_love_image_a2(); //use this when another allience partner with image exists. this will read ap2d.
-    //holdup(dlength);
-    draw_we_love_animated(); //use this if one or both of the alliance partners does not have an image. this reads ap1d and ap2d.
-    holdup(dlength);
     }else{
       drawScreen(0, 2); 
       holdup(dlength);
@@ -214,12 +214,12 @@ void loop() {
   }
 
   if(dispType == 4){
-    //draw_we_love_image_a1(); //use this when allience partner with image exists. this will read ap1d.
-    //holdup(dlength);
-    //draw_we_love_image_a2(); //use this when another allience partner with image exists. this will read ap2d.
-    //holdup(dlength);
-    draw_we_love_animated(); //use this if one or both of the alliance partners does not have an image. this reads ap1d and ap2d.
+    draw_we_love_image_a1(); //use this when allience partner with image exists. this will read ap1d.
     holdup(dlength);
+    draw_we_love_image_a2(); //use this when another allience partner with image exists. this will read ap2d.
+    holdup(dlength);
+    //draw_we_love_animated(); //use this if one or both of the alliance partners does not have an image. this reads ap1d and ap2d.
+    //holdup(dlength);
   }
 
   if(dispType == 5){ 
@@ -238,7 +238,7 @@ void loop() {
     //std::uniform_real_distribution<double> dist(1, 5);   //generates a random number 1-5 according to the uniform real distribution
     //randNumber = dist(mt);
     randNumber = random(1, 7);
-    //randNumber = (randNumber % 7) + 1;
+    //randNumber = (randNumber % 7) + 1; 
     Serial.println(seed);
     Serial.println(printStep);
     if (randNumber == 1){

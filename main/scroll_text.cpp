@@ -13,7 +13,7 @@ extern int str_len;
 extern void holdup(int del_len);
 
 void drawSponsors (void){
-  scrolltext = "          West Albany High School/South Albany High School/Albany Public Schools Foundation/LBCC Mechatronics/K & D Engineering/No Dinx/Christmas Storybook Land/Oregon Community Foundation/Albany Optimist Club/American Legion Post 10 Albany/American Legion Auxiliary/HP/Linn County Fair/Benton County Fair/Albany Parks & Rec/Burchams Metals/Michelle Ramage/Jason Yutzie/Nathan Guthrie/Coastal Farm and Ranch/Wheeler Family Foundation/Takena and Central PTC/Selmet/Pacific Cast Technologies/See's Candies/Red Robin/Chipotle/Panda Express/Burgerville/Viper Northwest/Bottle Drop/First/First Force/Sherwin Williams/ORTOP/Albany Box Company/THANK YOU!!!!";
+  scrolltext = "          West Albany High School/South Albany High School/Albany Public Schools Foundation/LBCC Mechatronics/K & D Engineering/No Dinx/Christmas Storybook Land/Oregon Community Foundation/Albany Optimist Club/American Legion Post 10 Albany/American Legion Auxiliary/HP/Linn County Fair/Benton County Fair/Albany Parks & Rec/Burchams Metals/Michelle Ramage/Jason Yutzie/Nathan Guthrie/Coastal Farm and Ranch/Wheeler Family Foundation/Takena and Central PTC/Selmet/Pacific Cast Technologies/See's Candies/Red Robin/Chipotle/Panda Express/Burgerville/Viper Northwest/Bottle Drop/FIRST/FIRST Force/Sherwin Williams/ORTOP/Albany Box Company/THANK YOU!!!!";
   stlength = scrolltext.length();
   runs = 0;
   stRuns = 0;
@@ -100,18 +100,17 @@ void drawScrolltext(String scrolltextString){
   //2023:
 int randNumber2ElectricBoogaloo = random(1, 12); //last number should be the number of scrolltext messages you want shown + 1.
 String scrolltextOptions[] = {
-  "       The 'W' in SWARM stands for South",
+  "       The 'W' in SWARM stands for West!",
   "       WATER GAME 2025!!!!!!!!",
   "       Safety glasses save eyes!",
   "       The 'S' in SWARM stands for South!",
-  "       Bees arn't the only animals that SWARM!",
+  "       Bees aren't the only animals that SWARM!",
   "       Testing, testing, 1, 2, 3...is this thing on?",
   "       SWARM has been trying to reach you about your robot's extended warranty.",
   "       Hello! My name is Squishy.",
-  "       Look, mom! I'm on Twitch.tv!!",
+  "       Hi, mom! I'm on Twitch.tv!!",
   "       Thank you for hosting, EWU!",
   "       How much does a polar bear weigh?",
-
 };
  // "       The Game  "
   scrolltext = scrolltextOptions[randNumber2ElectricBoogaloo];
