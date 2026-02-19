@@ -237,18 +237,18 @@ void loop() {
     //drawDeclarationFull(); //best function
     //std::uniform_real_distribution<double> dist(1, 5);   //generates a random number 1-5 according to the uniform real distribution
     //randNumber = dist(mt);
-    randNumber = random(1, 7);
+    randNumber = random(1, 15);
     //randNumber = (randNumber % 7) + 1; 
     Serial.println(seed);
     Serial.println(printStep);
     if (randNumber == 1){
-      drawJelly(); 
+      drawFuel(); 
     }
     if (randNumber == 2){
       drawBee();
     }
     if (randNumber == 3){
-      drawDeepSea();
+      drawFuel957();
     }
     if (randNumber == 4){
       draw957();
@@ -257,7 +257,31 @@ void loop() {
       draw957Pride();
     }
     if (randNumber == 6){
-      drawShallowSea();
+      drawDrill();
+    }
+    if (randNumber == 7){
+      drawCrane();
+    }
+    if (randNumber == 8){
+      drawSteamboat();
+    }
+    if (randNumber == 9){
+      drawCementTruck();
+    }
+    if (randNumber == 10){
+      drawFuelBee();
+    }
+    if (randNumber == 11){
+      drawAnniversary();
+    }
+    if (randNumber == 12){
+      drawAge();
+    }
+    if (randNumber == 13){
+      drawUnicornFuel();
+    }
+    if (randNumber == 14){
+      drawMascots();
     }
     holdup(8000);
     /*drawFirework();

@@ -27,4 +27,15 @@ void drawEvilJellyAnim(); //Drawn by Jacoby Kalita
 void drawShallowSea(); //Drawn by Dillon P.
 void drawDeepSea(); //Drawn by Dillon P.
 void drawJelly(); //Drawn by Braedon Kalita
+void drawCrane(); //Drawn by Calvin Buchner
+void drawFuel(); //Drawn by Calvin Buchner
+void drawFuel957(); //Drawn by Calvin Buchner
+void drawDrill(); //Drawn by Calvin Buchner
+void drawSteamboat(); //Drawn by Calvin Buchner
+void drawCementTruck(); //Drawn by Calvin Buchner
+void drawFuelBee(); //Drawn by Calvin Buchner 
+void drawAnniversary(); //Drawn by Henry Bishop
+void drawAge(); //Drawn by Henry Bishop
+void drawUnicornFuel(); //Drawn by Calvin Bucnher + KK R.
+void drawMascots(); //Drawn by Jacoby Kalita
 #endif
